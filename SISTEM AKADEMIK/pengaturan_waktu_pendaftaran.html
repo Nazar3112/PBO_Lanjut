@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Waktu Pendaftaran</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1 style="color: whitesmoke;">UNIVERSITAS MUHAMMADIYAH CIREBON</h1>
+    </header>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="pendaftaran.html">Pendaftaran</a>
+        <a href="informasi.html">Informasi</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
+    <div class="container">
+        <h1>Pengaturan Waktu Pendaftaran</h1>
+        <p>
+            Di sini Anda dapat mengatur waktu pendaftaran untuk calon mahasiswa baru. Anda dapat menentukan tanggal pembukaan dan penutupan pendaftaran serta memberikan pengingat tentang batas waktu pendaftaran.
+        </p>
+        <form action="#" method="post">
+            <label for="tanggal_buka">Tanggal Pembukaan Pendaftaran:</label>
+            <input type="date" id="tanggal_buka" name="tanggal_buka" required>
+
+            <label for="tanggal_tutup">Tanggal Penutupan Pendaftaran:</label>
+            <input type="date" id="tanggal_tutup" name="tanggal_tutup" required>
+
+            <label for="pengingat">Pemberitahuan Pengingat (Hari sebelum penutupan):</label>
+            <input type="number" id="pengingat" name="pengingat" min="1" max="30" required>
+
+            <input type="submit" value="Simpan Pengaturan">
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Sistem Penerimaan Mahasiswa Baru UMC. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
