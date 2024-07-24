@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem PMB UMC</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/UMC.png">
+</head>
+<body>
+    <header>
+        <h1 style="color: whitesmoke;">UNIVERSITAS MUHAMMADIYAH CIREBON</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('index') }}">Beranda</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Pendaftaran</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('pendaftaran') }}">Pendaftaran Mahasiswa Baru</a>
+                <a href="{{ url_for('informasi_pendaftar') }}">Informasi Pendaftar</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Informasi</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('informasi_kampus') }}">Informasi Seputar Kampus</a>
+                <a href="{{ url_for('pengaturan_program_studi') }}">Informasi Fakultas dan Program Studi</a>
+                <a href="{{ url_for('countdown') }}">Informasi Pendaftaran</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            {% if session.get('username') %}
+                <a href="#" class="dropbtn">Profile</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile') }}">Ubah Sandi</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="dropbtn">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <h1 style="color: whitesmoke;"> LOGIN MENU </h1>
+        </header>
+        <nav class="user-menu">
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Ubah Kata Sandi</a></li>
+                <li><a href="#">Perbarui Profil</a></li>
+            </ul>
+        </nav>
+    </div>
+    <footer>
+        <p>&copy; 2024 Sistem Penerimaan Mahasiswa Baru UMC. Made with ❤️</p>
+    </footer>
+</body>
+</html>

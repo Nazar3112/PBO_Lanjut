@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem PMB UMC</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/UMC.png">
+</head>
+<body>
+    <header>
+        <h1 style="color: whitesmoke;">UNIVERSITAS MUHAMMADIYAH CIREBON</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('index') }}">Beranda</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Pendaftaran</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('pendaftaran') }}">Pendaftaran Mahasiswa Baru</a>
+                <a href="{{ url_for('informasi_pendaftar') }}">Informasi Pendaftar</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Informasi</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('informasi_kampus') }}">Informasi Seputar Kampus</a>
+                <a href="{{ url_for('pengaturan_program_studi') }}">Informasi Fakultas dan Program Studi</a>
+                <a href="{{ url_for('countdown') }}">Informasi Pendaftaran</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            {% if session.get('username') %}
+                <a href="#" class="dropbtn">Profile</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile') }}">Ubah Sandi</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="dropbtn">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="hero">
+        <h2><span class="highlight-block">SELAMAT DATANG DI WEBSITE <br>UNIVERSITAS MUHAMMADIYAH CIREBON</span></h2>
+        <p><span class="highlight-block"><strong>Dapatkan informasi terbaru dan jangan lewatkan kesempatan untuk bergabung dengan kami!</strong></span></p>
+    </div>
+    <div class="container">
+        <section>
+            {% if session.get('username') %}
+                <p><strong>Welcome, {{ session.username }}!</strong></p>
+                <a href="{{ url_for('informasi_pendaftar') }}">Lihat Informasi Pendaftar</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+            <h3><br>Tentang Kami</h3>
+            <p>
+                Selamat datang di Universitas Muhammadiyah Cirebon, tempat keren buat kamu yang pengen jadi generasi unggul dan berakhlak mulia. Di UMC, kamu bakal dapetin pengalaman belajar yang asik banget, lengkap dengan fasilitas modern, berbagai program studi seru, dan lingkungan akademik yang dinamis.
+                UMC gak cuma fokus di kecemerlangan akademik aja, tapi juga ngembangin karakter dan skill kamu lewat banyak kegiatan ekstrakurikuler dan pengabdian masyarakat. Dosen-dosen kita tuh keren-keren dan jago di bidangnya, siap kasih pendidikan yang relevan dan inovatif biar kamu siap menghadapi tantangan global.
+            </p>
+            <p>
+                <br>Yuk, gabung di UMC dan jadi bagian dari komunitas yang peduli, kreatif, dan punya daya saing tinggi. Temukan potensi terbaikmu bareng kami dan wujudkan impianmu untuk masa depan yang gemilang. Let's go, raih masa depan cemerlang bareng UMC!
+            </p>
+        </section>
+        <section>
+            <h3>Persyaratan Pendaftaran</h3>
+            <h4><br>Persyaratan Mahasiswa Baru :</h4>
+            <ol style="margin-left: 30px;">
+                <li>Scan Ijazah atau Surat Keterangan Lulus</li>
+                <li>Scan SKHU, Nilai UN atau Daftar Nilai Ijazah</li>
+                <li>Scan Kartu Keluarga</li>
+                <li>Scan Kartu Tanda Penduduk (KTP)</li>
+                <li>Scan Pas Foto Warna (Ukuran 3x4)</li>
+                <li>Scan Akta Lahir</li>
+                <li>Piagam Prestasi (Khusus Jalur Prestasi)</li>
+                <li>Surat Rekomendasi Persyarikatan (Khusus Jalur Persyarikatan)</li>
+            </ol>
+            <h4><br>Persyaratan Mahasiswa Pindahan/Transfer:</h4>
+            <ol style="margin-left: 30px;">
+                <li>Scan Ijazah atau Surat Keterangan Lulus</li>
+                <li>Scan SKHU, Nilai UN, atau Daftar Nilai Ijazah</li>
+                <li>Scan Kartu Keluarga</li>
+                <li>Scan Kartu Tanda Penduduk (KTP)</li>
+                <li>Scan Pas Foto Warna (Ukuran 3x4)</li>
+                <li>Scan Surat Pindah dari Universitas asal</li>
+                <li>Scan Salinan Nilai yang disahkan PTS/PTN (IPK Min 3,00 untuk PTS dan 2,75 untuk PTN)</li>
+                <li>Scan Akreditasi Prodi Kampus Asal</li>
+            </ol>
+            <h4><br>Persyaratan Mahasiswa Lanjutan / Pascasarjana (D3 ke S1 / S1 ke S2 / S1 Non Linear ke S1):</h4>
+            <ol style="margin-left: 30px;">
+                <li>Scan Ijazah atau Surat Keterangan Lulus</li>
+                <li>Scan SKHU, Nilai UN, atau Daftar Nilai Ijazah</li>
+                <li>Scan Kartu Keluarga</li>
+                <li>Scan Kartu Tanda Penduduk (KTP)</li>
+                <li>Scan Pas Foto Warna (Ukuran 3x4)</li>
+                <li>Scan Ijazah D3/S1</li>
+                <li>Scan Transkrip Nilai D3/S1</li>
+            </ol>
+            <h4><br>Persyaratan Mahasiswa Baru (Asing):</h4>
+            <ol style="margin-left: 30px;">
+                <li>Scan Ijazah atau Surat Keterangan Lulus (Asli dan Terjemahan)</li>
+                <li>Scan SKHU, Nilai UN, atau Daftar Nilai Ijazah (Asli dan Terjemahan)</li>
+                <li>Scan Kartu Keluarga</li>
+                <li>Scan Paspor</li>
+                <li>Scan Kartu Tanda Penduduk (KTP)</li>
+                <li>Scan Pas Foto Warna (Ukuran 3x4)</li>
+            </ol>
+        </section>
+        <section>
+            <h3>Akun official</h3>
+            <ul style="margin-left: 30px;">
+                <li>Instagram : <a href="https://www.instagram.com/officialpmbumc.id/" target="_blank">@officialpmbumc.id</a></li>
+                <li>Twitter : <a href="https://twitter.com/officialpmbumc" target="_blank">Officialpmbumc</a></li>
+                <li>Facebook : <a href="https://Facebook.com/Officialpmbumc.ac.id" target="_blank">Officialpmbumc.id</a></li>
+                <li>Email : <a href="mailto:pmb@umc.ac.id" target="_blank">pmb@umc.ac.id</a></li>
+                <li>Website : <a href="https://pmb.umc.ac.id" target="_blank">https://pmb.umc.ac.id</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Testimonial Alumni</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;">
+                <div class="testimonial">
+                    <img src="{{ url_for('static', filename='orang.jpg') }}" alt="orang" title="Ini muka sapa njir">
+                    <p>"UKTnya murah sekali, bahkan setara dengan harga makanan kucing saya"</p>
+                    <li style="text-align: left;">Alfiyan Nazar (CEO Microsoft)</li>
+                </div>
+                <div class="testimonial">
+                    <img src="{{ url_for('static', filename='orang.jpg') }}" alt="orang" title="Ini muka sapa njir">
+                    <p>"Kuliah disini sangat mudah, saya sampe nambah 6 Semester karena ketagihan"</p>
+                    <li style="text-align: left;">Jayana (Deputi BSSN)</li>
+                </div>
+                <div class="testimonial">
+                    <img src="{{ url_for('static', filename='orang.jpg') }}" alt="orang" title="Ini muka sapa njir">
+                    <p>"Di universitas ini, kamu bisa lulus tepat waktu... kalau kamu punya mesin waktu"</p>
+                    <li style="text-align: left;">Maulana (Operator Warnet)</li>
+                </div>
+                <div class="testimonial">
+                    <img src="{{ url_for('static', filename='orang.jpg') }}" alt="orang" title="Ini muka sapa njir">
+                    <p>"Disini, mahasiswa sangat disiplin. Terutama dalam hal antri untuk remedial"</p>
+                    <li style="text-align: left;">M. Fathir Al Husain (Menteri Kelautan dan Perikanan / Bagian Mancing)</li>
+                </div>
+            </div>
+        </section>
+        <a href="{{ url_for('pendaftaran') }}" class="btn">Yuk, buruan daftar ke UMC!</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Sistem Penerimaan Mahasiswa Baru UMC. Made with ❤️</p>
+    </footer>
+</body>
+</html>
