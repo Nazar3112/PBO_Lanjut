@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem PMB UMC</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/UMC.png">
+</head>
+<body>
+    <header>
+        <h1 style="color: whitesmoke;">UNIVERSITAS MUHAMMADIYAH CIREBON</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('index') }}">Beranda</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Pendaftaran</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('pendaftaran') }}">Pendaftaran Mahasiswa Baru</a>
+                <a href="{{ url_for('informasi_pendaftar') }}">Informasi Pendaftar</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Informasi</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('informasi_kampus') }}">Informasi Seputar Kampus</a>
+                <a href="{{ url_for('pengaturan_program_studi') }}">Informasi Fakultas dan Program Studi</a>
+                <a href="{{ url_for('countdown') }}">Informasi Pendaftaran</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            {% if session.get('username') %}
+                <a href="#" class="dropbtn">Profile</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile') }}">Ubah Sandi</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="dropbtn">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container" style="width: 850px;">
+        <h1>PREVIEW FORMULIR PENDAFTARAN</h1>
+        <table border="1">
+            <tr>
+                <td>Nama:</td>
+                <td>{{ pendaftar.nama }}</td>
+            </tr>
+            <tr>
+                <td>Tempat Lahir:</td>
+                <td>{{ pendaftar.tempat_lahir }}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Lahir:</td>
+                <td>{{ pendaftar.tanggal_lahir }}</td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin:</td>
+                <td>{{ pendaftar.jenis_kelamin }}</td>
+            </tr>
+            <tr>
+                <td>Alamat:</td>
+                <td>{{ pendaftar.alamat }}</td>
+            </tr>
+            <tr>
+                <td>Telepon:</td>
+                <td>{{ pendaftar.telepon }}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{ pendaftar.email }}</td>
+            </tr>
+            <tr>
+                <td>NIK:</td>
+                <td>{{ pendaftar.nik }}</td>
+            </tr>
+            <tr>
+                <td>Sekolah Asal:</td>
+                <td>{{ pendaftar.sekolah_asal }}</td>
+            </tr>
+            <tr>
+                <td>Tahun Lulus:</td>
+                <td>{{ pendaftar.tahun_lulus }}</td>
+            </tr>
+            <tr>
+                <td>Jurusan:</td>
+                <td>{{ pendaftar.jurusan }}</td>
+            </tr>
+            <tr>
+                <td>Nama Ayah:</td>
+                <td>{{ pendaftar.nama_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Ayah:</td>
+                <td>{{ pendaftar.pekerjaan_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Nama Ibu:</td>
+                <td>{{ pendaftar.nama_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Ibu:</td>
+                <td>{{ pendaftar.pekerjaan_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Nama Wali:</td>
+                <td>{{ pendaftar.nama_wali }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Wali:</td>
+                <td>{{ pendaftar.pekerjaan_wali }}</td>
+            </tr>
+            <tr>
+                <td>Alamat Orangtua:</td>
+                <td>{{ pendaftar.alamat_orangtua }}</td>
+            </tr>
+            <tr>
+                <td>Telepon Orangtua:</td>
+                <td>{{ pendaftar.telepon_orangtua }}</td>
+            </tr>
+            <tr>
+                <td>Pernyataan:</td>
+                <td>{{ 'Ya' if pendaftar.pernyataan else 'Tidak' }}</td>
+            </tr>
+        </table>
+        <a href="{{ url_for('cetak_formulir') }}" class="btn" target="_blank">Cetak Formulir</a>
+</body>
+</html>

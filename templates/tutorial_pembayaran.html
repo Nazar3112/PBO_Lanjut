@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Pembayaran</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="../static/UMC.png">
+</head>
+<body>
+    <header>
+        <h1 style="color: whitesmoke;">UNIVERSITAS MUHAMMADIYAH CIREBON</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('index') }}">Beranda</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Pendaftaran</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('pendaftaran') }}">Pendaftaran Mahasiswa Baru</a>
+                <a href="{{ url_for('informasi_pendaftar') }}">Informasi Pendaftar</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Informasi</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('informasi_kampus') }}">Informasi Seputar Kampus</a>
+                <a href="{{ url_for('pengaturan_program_studi') }}">Informasi Fakultas dan Program Studi</a>
+                <a href="{{ url_for('countdown') }}">Informasi Pendaftaran</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            {% if session.get('username') %}
+                <a href="#" class="dropbtn">Profile</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile') }}">Ubah Sandi</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="dropbtn">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Tutorial Pembayaran</h1>
+        
+        <h2>Pembayaran Melalui BSI</h2>
+        <h3>Mobile & BSI NET Banking</h3>
+        <ol>
+            <li>Pilih menu Pembayaran/Payment.</li>
+            <li>Pilih Akademik.</li>
+            <li>Masukkan kode 5570 atau pilih UMC (UNIVERSITAS MUHAMMADIYAH CIREBON).</li>
+            <li>Masukkan NIM pada kolom ID Pelanggan/Kode Bayar/ Input Kode UIN Sumatera Utara, dan pilih "Lanjut” jika sudah sesuai tagihan.</li>
+            <li>Masukkan nominal tagihan yang akan dibayar +ADM Transaksi (2.500,00).</li>
+            <li>Layar validasi tagihan akan muncul pada layar, masukkan PIN Anda dan pilih "Selanjutnya" untuk submit.</li>
+            <li>Selesai.</li>
+        </ol>
+
+        <h3>Pembayaran di Teller Seluruh Cabang BSI</h3>
+        <ol>
+            <li>Tulis pada Slip Bayar Tagihan, Nama Pelanggan, Kode 5570+ID Pelanggan (NIM), Jenis Tagihan (Contoh: Biaya SPP Universitas XYZ) dan Dibayarkan secara Tunai atau Beban rekening nomor...</li>
+            <li>Siswa tanda tangan pada Slip bayar tagihan tersebut.</li>
+            <li>Siswa menyampaikan ke petugas Teller BSI.</li>
+            <li>Teller akan mengkonfirmasi nominal tagihan siswa tersebut yang akan dibayar. (Tagihan sudah termasuk biaya adm)</li>
+            <li>Selesai.</li>
+        </ol>
+
+        <h3>Pembayaran Melalui ATM BSI</h3>
+        <ol>
+            <li>Pilih Menu Payment/ Pembayaran /Pembelian.</li>
+            <li>Pilih Akademik.</li>
+            <li>Masukkan kode institusi 5570 + Masukkan Nomor ID Pelanggan (NIM). Contoh: 5570+ID Pelanggan 42123456789 = 557042123457.</li>
+            <li>Pilih: Benar/Selanjutnya.</li>
+            <li>Kemudian tampil informasi data transaksi Anda, pastikan data sudah benar (Tagihan sudah termasuk biaya adm).</li>
+            <li>Pilih Benar/Ya.</li>
+        </ol>
+
+        <h3>Pembayaran dari ATM/M-Banking Bank Lain</h3>
+        <ol>
+            <li>Pilih Transfer.</li>
+            <li>Pilih Antar Bank Online/ Transfer Online antar Bank.</li>
+            <li>Masukkan kode BSI 451 atau pilih Bank Mandiri Syariah.</li>
+            <li>Masukkan kode 900 + kode Yayasan XYZ 5570 + Masukkan Nomor ID Pelanggan (NIM). Contoh: 900+5570+ID Pelanggan.</li>
+            <li>Masukkan nominal tagihan.</li>
+            <li>Layar akan menampilkan data transaksi Anda, jika data sudah benar pilih YA (OK).</li>
+            <li>Proses Pembayaran.</li>
+        </ol>
+        <p>Note: Untuk transfer melalui SKN dan Kliring belum bisa dilayani.</p>
+    </div>
+    <footer>
+        <p>&copy; 2024 Sistem Penerimaan Mahasiswa Baru UMC. Made with ❤️</p>
+    </footer>
+</body>
+</html>

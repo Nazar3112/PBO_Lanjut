@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem PMB UMC</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/UMC.png">
+</head>
+<body>
+    <header>
+        <h1 style="color: whitesmoke;">UNIVERSITAS MUHAMMADIYAH CIREBON</h1>
+    </header>
+    <nav>
+        <a href="{{ url_for('index') }}">Beranda</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Pendaftaran</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('pendaftaran') }}">Pendaftaran Mahasiswa Baru</a>
+                <a href="{{ url_for('informasi_pendaftar') }}">Informasi Pendaftar</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Informasi</a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('informasi_kampus') }}">Informasi Seputar Kampus</a>
+                <a href="{{ url_for('pengaturan_program_studi') }}">Informasi Fakultas dan Program Studi</a>
+                <a href="{{ url_for('countdown') }}">Informasi Pendaftaran</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            {% if session.get('username') %}
+                <a href="#" class="dropbtn">Profile</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile') }}">Ubah Sandi</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="dropbtn">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        <h1>FAKULTAS DAN PROGRAM STUDI</h1>
+        <section>
+            <h3>Fakultas Teknik</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>Teknik Informatika</li>
+                <p>Di Teknik Informatika, mahasiswa akan mempelajari pemrograman web, sistem operasi, jaringan komputer, basis data, kecerdasan buatan, dan keamanan siber. Program ini bertujuan untuk membentuk profesional yang siap menghadapi dunia digital dengan keterampilan yang inovatif dan fleksibel.</p>
+                <br><li>Teknik Industri</li>
+                <p>Teknik Industri menawarkan pemahaman tentang proses produksi, manajemen operasi, rekayasa sistem, pengendalian kualitas, dan manajemen rantai pasok. Mahasiswa akan belajar mengembangkan produk dan mengelola sumber daya manusia dengan efisien untuk menciptakan industri yang berkelanjutan.</p>
+                <br><li>Teknik Peternakan</li>
+                <p>Program Studi Teknik Peternakan memberikan pengetahuan tentang teknologi terbaru dalam peternakan, kesehatan hewan, manajemen sumber daya, nutrisi ternak, dan teknologi pakan. Tujuannya adalah memajukan industri peternakan yang berkelanjutan.</p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Ekonomi dan Bisnis</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>Manajemen</li>
+                <p>Manajemen mengajarkan strategi bisnis, kepemimpinan, manajemen sumber daya manusia, pemasaran, keuangan, dan operasi bisnis. Mahasiswa akan dipersiapkan untuk menjadi agen perubahan dalam dunia bisnis global.</p>
+                <br><li>Akuntansi</li>
+                <p>Program Akuntansi fokus pada analisis laporan keuangan, manajemen risiko, akuntansi manajemen, perpajakan, dan audit. Mahasiswa akan mengembangkan keterampilan yang diperlukan untuk menjadi akuntan yang sukses dan terpercaya.</p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Hukum</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>Ilmu Hukum</li>
+                <p>Ilmu Hukum memberikan pemahaman tentang sistem hukum, etika, dan keadilan. Mahasiswa akan mempelajari hukum pidana, perdata, tata negara, hukum internasional, dan hukum bisnis, serta dipersiapkan untuk berkarir di berbagai bidang hukum yang menantang.</p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Ilmu Sosial dan Politik</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>Ilmu Komunikasi</li>
+                <p>Ilmu Komunikasi mengasah keterampilan komunikasi, memahami media massa, jurnalisme, hubungan masyarakat, dan komunikasi digital. Mahasiswa akan dipersiapkan untuk dunia komunikasi yang dinamis.</p>
+                <br><li>Ilmu Pemerintahan</li>
+                <p>Ilmu Pemerintahan mempelajari dinamika politik, kebijakan publik, tata kelola negara, administrasi publik, dan hubungan internasional. Program ini mempersiapkan mahasiswa menjadi pemimpin masa depan yang berpengaruh.</p>
+                <br><li>Hubungan Masyarakat</li>
+                <p>Program Hubungan Masyarakat mengajak mahasiswa mendalami praktik komunikasi strategis dalam organisasi dan masyarakat. Fokusnya pada teori komunikasi, teknik penulisan berita, manajemen media sosial, perencanaan kampanye komunikasi, dan manajemen krisis.</p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Olahraga dan Kesehatan</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>Ilmu Keolahragaan</li>
+                <p>Ilmu Keolahragaan mempelajari pentingnya olahraga untuk kesehatan fisik dan mental. Mahasiswa akan mempelajari ilmu fisiologi olahraga, biomekanika, gizi olahraga, dan manajemen acara olahraga untuk mengembangkan program kebugaran yang efektif.</p>
+                <br><li>Gizi</li>
+                <p>Program Gizi mempelajari pentingnya nutrisi dalam menjaga kesehatan. Mahasiswa akan belajar merencanakan pola makan seimbang, ilmu nutrisi, dietetika, kesehatan masyarakat, dan manajemen layanan makanan. Mahasiswa juga dilatih untuk menyusun program edukasi gizi yang efektif.</p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Agama Islam</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>Tasawuf dan Psikoterapi</li>
+                <p>Tasawuf dan Psikoterapi mempelajari spiritualitas dan psikologi dalam Islam. Mahasiswa akan memahami keseimbangan antara tubuh, pikiran, dan jiwa serta mempelajari metode spiritual dan praktik meditasi dalam tradisi tasawuf.</p>
+                <br><li>Ilmu Al-Qur'an dan Tafsir</li>
+                <p>Ilmu Al-Qur'an dan Tafsir memperdalam pemahaman tentang teks suci Al-Qur'an, tafsir klasik dan modern, serta aplikasi ajaran Islam dalam kehidupan sehari-hari. Program ini mempelajari nilai-nilai moral, etika, dan panduan hidup dalam Al-Qur'an.</p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Pendidikan</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>Pendidikan Matematika</li>
+                <p>Pendidikan Matematika memperdalam konsep-konsep matematika seperti aljabar, geometri, kalkulus, statistik, dan analisis. Mahasiswa juga akan mempelajari metode pengajaran yang efektif dan pengembangan kurikulum yang relevan untuk menumbuhkan minat belajar matematika pada generasi mendatang.</p>
+                <br><li>Pendidikan Kimia</li>
+                <p>Pendidikan Kimia menawarkan pemahaman tentang kimia organik, anorganik, fisik, analitik, dan biokimia. Mahasiswa akan terlibat dalam percobaan laboratorium untuk memahami konsep dan keterampilan praktis dalam kimia.</p>
+                <br><li>Pendidikan Bahasa Inggris</li>
+                <p>Pendidikan Bahasa Inggris memperdalam pemahaman tentang linguistik, sastra Inggris, keterampilan mengajar, dan metode pengajaran bahasa yang efektif. Mahasiswa juga akan belajar berbagai metode inovatif dalam pengajaran bahasa.</p>
+                <br><li>Pendidikan Guru Sekolah Dasar</li>
+                <p>Program ini mempersiapkan mahasiswa menjadi pendidik yang berdedikasi, mampu mengembangkan potensi anak-anak, dan menginspirasi belajar seumur hidup. Fokus pada perkembangan anak, metode pengajaran, manajemen kelas, dan pengembangan kurikulum.</p>
+                <br><li>Pendidikan Guru Pendidikan Anak Usia Dini</li>
+                <p>Program ini mempelajari pendekatan pembelajaran yang tepat untuk anak usia dini, perkembangan anak, dan metode pengajaran kreatif. Mahasiswa berperan penting dalam memastikan setiap anak mendapatkan pendidikan berkualitas.</p>
+                <br><li>Pendidikan Ilmu Pengetahuan Alam</li>
+                <p>Pendidikan Ilmu Pengetahuan Alam mempersiapkan mahasiswa menjadi pendidik yang menginspirasi minat belajar sains. Mahasiswa akan belajar tentang fisika, biologi, kimia, dan pengajaran sains, serta menjadi model dan fasilitator pembelajaran yang mendorong eksplorasi ilmiah dan berpikir kritis.</p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Kedokteran</h1>
+            <ul style="margin-left: 30px;">
+                <br><li>Ilmu Keperawatan</li>
+                <p>Ilmu Keperawatan memberikan pengetahuan tentang prinsip-prinsip perawatan kesehatan, keterampilan klinis, etika profesi, keperawatan komunitas, dan manajemen keperawatan. Mahasiswa dipersiapkan untuk memberikan pelayanan perawatan yang terbaik bagi masyarakat.</p>
+                <br><li>Profesi Ners</li>
+                <p>Program Profesi Ners mempersiapkan mahasiswa menjadi perawat yang berdedikasi dan berkompeten dalam memberikan asuhan kesehatan berkualitas, dengan fokus pada praktik klinis, manajemen asuhan keperawatan, dan penelitian keperawatan.
+                </p>
+            </ul>
+        </section>
+        <section>
+            <h3>Fakultas Keguruan</h3>
+            <ul style="margin-left: 30px;">
+                <br><li>PPG PGSD DALJAB</li>
+                <p>Program ini mempersiapkan mahasiswa menjadi guru sekolah dasar berkualitas dengan fokus pada pendidikan jarak jauh. Mahasiswa akan belajar metode pengajaran, pengelolaan kelas, dan teknologi pendidikan.</p>
+                <br><li>PPG PGSD PRAJAB</li>
+                <p>Program ini memberikan pengalaman langsung mengajar di sekolah dasar. Mahasiswa akan belajar metode pengajaran praktis, manajemen kelas, dan pengembangan kurikulum untuk siap terjun ke dunia pendidikan.</p>
+                <br><li>PPG PAUD DALJAB</li>
+                <p>Program ini mempersiapkan mahasiswa menjadi guru anak usia dini yang berdedikasi dengan fokus pada pendidikan jarak jauh, serta mempelajari metode pembelajaran kreatif dan perkembangan anak.</p>
+                <br><li>PPG PAUD PRAJAB</li>
+                <p>Program ini memberikan pengalaman langsung mengajar di lingkungan pendidikan anak usia dini. Mahasiswa akan belajar metode pengajaran praktis dan manajemen kelas untuk siap menjadi guru yang terampil dan berpengalaman.</p>
+                <br><li>PPG IPA DALJAB</li>
+                <p>Program ini mempersiapkan mahasiswa menjadi guru IPA dengan fokus pada pendidikan jarak jauh. Mahasiswa akan belajar metode pengajaran sains, pengembangan kurikulum, dan teknologi pendidikan.</p>
+            </ul>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Sistem Penerimaan Mahasiswa Baru UMC. Made with ❤️</p>
+    </footer>
+</body>
+</html>
